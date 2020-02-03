@@ -20,41 +20,54 @@
         </ul>
     </div>
     <input type="button" onclick="inferPassword()" style="cursor: pointer;" value="开始推断">
+    <input type="button" onclick="ViewSourceCode()" style="cursor: pointer;" value="查看源码">
     <div>
         开锁密码为：<span class="password"></span>
     </div>
 </body>
 <script>
+    //查看源码
+    function ViewSourceCode() {
+        window.open("https://chen-devin.github.io/LogicClubHtml/")
+    }
+
     var passwordSp = document.getElementsByClassName("password")[0];
     //开锁密码获取方法
     function inferPassword() {
-        for (var i = 100; i < 1000; i++) {
+        var passwordVal = [];
+        for (var i = 0; i < 1000; i++) {
+            var item = i;
+            if (i.toString().length == 1) {
+                item = "00" + i;
+            } else if (i.toString().length == 2) {
+                item = "0" + i;
+            }
             // 246 一个号码正确，位置正确
-            if (this.NumberRightNum(i, 246) != 1 || this.CorrectPositionNum(i, 246) != 1) {
+            if (NumberRightNum(item, 246) != 1 || CorrectPositionNum(item, 246) != 1) {
                 continue;
             }
             // 258 一个号码正确，位置不正确
-            else if (this.NumberRightNum(i, 258) != 1 || this.CorrectPositionNum(i, 258) != 0) {
+            else if (NumberRightNum(item, 258) != 1 || CorrectPositionNum(item, 258) != 0) {
                 continue;
             }
             // 692 两个号码正确，位置都不正确
-            else if (this.NumberRightNum(i, 692) != 2 || this.CorrectPositionNum(i, 692) != 0) {
+            else if (NumberRightNum(item, 692) != 2 || CorrectPositionNum(item, 692) != 0) {
                 continue;
             }
             // 174 没有一个号码正确
-            else if (this.NumberRightNum(i, 174) != 0 || this.CorrectPositionNum(i, 174) != 0) {
+            else if (NumberRightNum(item, 174) != 0 || CorrectPositionNum(item, 174) != 0) {
                 continue;
             }
             // 419 一个号码正确，位置不正确
-            else if (this.NumberRightNum(i, 419) != 1 || this.CorrectPositionNum(i, 419) != 0) {
+            else if (NumberRightNum(item, 419) != 1 || CorrectPositionNum(item, 419) != 0) {
                 continue;
             }
             //全都满足，则说明是该值
             else {
-                passwordSp.innerHTML = i;
-                break;
+                passwordVal.push(item);
             }
         }
+        passwordSp.innerHTML = passwordVal.join();
     }
     //号码的正确个数
     function NumberRightNum(one, two) {
