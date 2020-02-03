@@ -28,7 +28,7 @@
 <script>
     //查看源码
     function ViewSourceCode() {
-        window.open("https://chen-devin.github.io/LogicClubHtml/")
+        window.open("https://github.com/chen-Devin/LogicClub/blob/master/index.html")
     }
     var passwordSp = document.getElementsByClassName("password")[0];
     //开锁密码获取方法
@@ -36,9 +36,9 @@
         var passwordVal = [];
         for (var i = 0; i < 1000; i++) {
             var item = i;
-            if (i.toString().length == 1) {
+            if (i < 10) {
                 item = "00" + i;
-            } else if (i.toString().length == 2) {
+            } else if (i < 100) {
                 item = "0" + i;
             }
             // 246 一个号码正确，位置正确
