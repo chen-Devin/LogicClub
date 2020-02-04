@@ -20,16 +20,12 @@
         </ul>
     </div>
     <input type="button" onclick="inferPassword()" style="cursor: pointer;" value="开始推断">
-    <input type="button" onclick="ViewSourceCode()" style="cursor: pointer;" value="查看源码">
+    <a href="https://github.com/chen-Devin/LogicClub/blob/master/index.html" target="_blank">查看源码</a>
     <div>
         开锁密码为：<span class="password"></span>
     </div>
 </body>
 <script>
-    //查看源码
-    function ViewSourceCode() {
-        window.open("https://github.com/chen-Devin/LogicClub/blob/master/index.html")
-    }
     var passwordSp = document.getElementsByClassName("password")[0];
     //开锁密码获取方法
     function inferPassword() {
